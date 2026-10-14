@@ -1,0 +1,838 @@
+# swf/Qua01.swf  sig=CWS v7 body=560052
+--- DefineSprite id=6 frames=25 ---
+  ### DoAction @0x00364a len=14
+    0x00364a  Push int:15
+    0x003652  RandomNumber
+    0x003653  GotoFrame2 1
+    0x003655  End
+    0x003656    !! unknown opcode 0x01 - stopping
+
+--- DefineSprite id=7 frames=3 ---
+  ### DoAction @0x0036d0 len=7
+    0x0036d0  GotoFrame 2
+    0x0036d5  Play
+    0x0036d6  End
+
+--- DefineSprite id=9 frames=1 ---
+--- DefineSprite id=10 frames=1 ---
+--- DefineSprite id=17 frames=22 ---
+  ### DoAction @0x004a53 len=7
+    0x004a53  GotoFrame 2
+    0x004a58  Play
+    0x004a59  End
+
+--- DefineSprite id=24 frames=18 ---
+  ### DoAction @0x0065a5 len=7
+    0x0065a5  GotoFrame 2
+    0x0065aa  Play
+    0x0065ab  End
+
+--- DefineSprite id=29 frames=13 ---
+  ### DoAction @0x0080d6 len=7
+    0x0080d6  GotoFrame 2
+    0x0080db  Play
+    0x0080dc  End
+
+--- DefineSprite id=30 frames=4 ---
+--- DefineSprite id=33 frames=1 ---
+--- DefineSprite id=54 frames=10 ---
+--- DefineSprite id=56 frames=1 ---
+### DoAction @0x00a43a len=1080
+  0x00a43a  DefineFunction2 <0B > [7 ops] {
+  0x00a43d      NextFrame
+  0x00a43e      PrevFrame
+  0x00a43f      End
+  0x00a440      End
+  0x00a441      End
+  0x00a442      StringLess
+  0x00a443      End
+  0x00a43a  }
+  0x00a444  Push <1B 03>
+  0x00a44a  Push int:2011
+  0x00a452  Push int:511
+  0x00a45a  Modulo
+  0x00a45b  Push int:5
+  0x00a463  Multiply
+  0x00a464  SetVariable
+  0x00a465  Push <1B 03>
+  0x00a46b  GetVariable
+  0x00a46c  Return
+  0x00a46d  Push <1B 01>
+  0x00a473  Push int:-2021
+  0x00a47b  Push double:0.0, <2B 04 05>
+  0x00a48b  CallFunction
+  0x00a48c  Add2
+  0x00a48d  DefineLocal
+  0x00a48e  Push <1B 01>
+  0x00a494  GetVariable
+  0x00a495  Push int:369
+  0x00a49d  Equals
+  0x00a49e  Not
+  0x00a49f  If -> loca4a4 (delta +2)
+  0x00a4a2  StringAdd
+  0x00a4a3  End
+  0x00a4a4  Push <1B 01>
+  0x00a4aa  Push <1B 01>
+  0x00a4b0  GetVariable
+  0x00a4b1  Push int:329
+  0x00a4b9  Subtract
+  0x00a4ba  SetVariable
+  0x00a4bb  Push bool:True
+  0x00a4c0  Jump -> loca4c5 (delta +2)
+  0x00a4c3    !! unknown opcode 0xc9 - stopping
+
+--- DefineSprite id=64 frames=9 ---
+  ### DoAction @0x00ad68 len=2
+    0x00ad68  Stop
+    0x00ad69  End
+
+--- DefineSprite id=78 frames=2 ---
+  ### DoAction @0x047046 len=2
+    0x047046  Stop
+    0x047047  End
+
+--- DefineSprite id=235 frames=0 ---
+### DoInitAction @0x047cd1 len=1605 spriteId=235
+  0x047cd3  DefineFunction2 <0B > [7 ops] {
+  0x047cd6      NextFrame
+  0x047cd7      PrevFrame
+  0x047cd8      End
+  0x047cd9      End
+  0x047cda      End
+  0x047cdb      StringLess
+  0x047cdc      End
+  0x047cd3  }
+  0x047cdd  Push <1B 03>
+  0x047ce3  Push int:1713
+  0x047ceb  Push int:511
+  0x047cf3  Modulo
+  0x047cf4  Push int:5
+  0x047cfc  Multiply
+  0x047cfd  SetVariable
+  0x047cfe  Push <1B 03>
+  0x047d04  GetVariable
+  0x047d05  Return
+  0x047d06  Push <1B 01>
+  0x047d0c  Push int:-773
+  0x047d14  Push double:0.0, <2B 04 05>
+  0x047d24  CallFunction
+  0x047d25  Add2
+  0x047d26  DefineLocal
+  0x047d27  Push <1B 01>
+  0x047d2d  GetVariable
+  0x047d2e  Push int:127
+  0x047d36  Equals
+  0x047d37  Not
+  0x047d38  If -> loc47d3d (delta +2)
+  0x047d3b  StringAdd
+  0x047d3c  End
+  0x047d3d  Push <1B 01>
+  0x047d43  Push <1B 01>
+  0x047d49  GetVariable
+  0x047d4a  Push int:514
+  0x047d52  Add
+  0x047d53  SetVariable
+  0x047d54  Push bool:True
+  0x047d59  Jump -> loc47d5e (delta +2)
+  0x047d5c    !! unknown opcode 0xc9 - stopping
+
+--- DefineSprite id=236 frames=0 ---
+### DoInitAction @0x0486e5 len=1463 spriteId=236
+  0x0486e7  DefineFunction2 <0B > [7 ops] {
+  0x0486ea      NextFrame
+  0x0486eb      PrevFrame
+  0x0486ec      End
+  0x0486ed      End
+  0x0486ee      End
+  0x0486ef      StringLess
+  0x0486f0      End
+  0x0486e7  }
+  0x0486f1  Push <1B 03>
+  0x0486f7  Push int:2007
+  0x0486ff  Push int:511
+  0x048707  Modulo
+  0x048708  Push int:5
+  0x048710  Multiply
+  0x048711  SetVariable
+  0x048712  Push <1B 03>
+  0x048718  GetVariable
+  0x048719  Return
+  0x04871a  Push <1B 01>
+  0x048720  Push int:-2275
+  0x048728  Push double:0.0, <2B 04 05>
+  0x048738  CallFunction
+  0x048739  Add2
+  0x04873a  DefineLocal
+  0x04873b  Push <1B 01>
+  0x048741  GetVariable
+  0x048742  Push int:95
+  0x04874a  Equals
+  0x04874b  Not
+  0x04874c  If -> loc48751 (delta +2)
+  0x04874f  StringAdd
+  0x048750  End
+  0x048751  Push <1B 01>
+  0x048757  Push <1B 01>
+  0x04875d  GetVariable
+  0x04875e  Push int:353
+  0x048766  Add
+  0x048767  SetVariable
+  0x048768  Push bool:True
+  0x04876d  Jump -> loc48772 (delta +2)
+  0x048770    !! unknown opcode 0xc9 - stopping
+
+--- DefineSprite id=237 frames=0 ---
+### DoInitAction @0x049244 len=1494 spriteId=237
+  0x049246  DefineFunction2 <0B > [7 ops] {
+  0x049249      NextFrame
+  0x04924a      PrevFrame
+  0x04924b      End
+  0x04924c      End
+  0x04924d      End
+  0x04924e      StringLess
+  0x04924f      End
+  0x049246  }
+  0x049250  Push <1B 03>
+  0x049256  Push int:78
+  0x04925e  Push int:511
+  0x049266  Modulo
+  0x049267  Push int:5
+  0x04926f  Multiply
+  0x049270  SetVariable
+  0x049271  Push <1B 03>
+  0x049277  GetVariable
+  0x049278  Return
+  0x049279  Push <1B 01>
+  0x04927f  Push int:2
+  0x049287  Push double:0.0, <2B 04 05>
+  0x049297  CallFunction
+  0x049298  Add2
+  0x049299  DefineLocal
+  0x04929a  Push <1B 01>
+  0x0492a0  GetVariable
+  0x0492a1  Push int:392
+  0x0492a9  Equals
+  0x0492aa  Not
+  0x0492ab  If -> loc492b0 (delta +2)
+  0x0492ae  StringAdd
+  0x0492af  End
+  0x0492b0  Push <1B 01>
+  0x0492b6  Push <1B 01>
+  0x0492bc  GetVariable
+  0x0492bd  Push int:372
+  0x0492c5  Subtract
+  0x0492c6  SetVariable
+  0x0492c7  Push bool:True
+  0x0492cc  Jump -> loc492d1 (delta +2)
+  0x0492cf    !! unknown opcode 0xc9 - stopping
+
+--- DefineSprite id=238 frames=0 ---
+### DoInitAction @0x04a295 len=1458 spriteId=238
+  0x04a297  DefineFunction2 <0B > [7 ops] {
+  0x04a29a      NextFrame
+  0x04a29b      PrevFrame
+  0x04a29c      End
+  0x04a29d      End
+  0x04a29e      End
+  0x04a29f      StringLess
+  0x04a2a0      End
+  0x04a297  }
+  0x04a2a1  Push <1B 03>
+  0x04a2a7  Push int:564
+  0x04a2af  Push int:511
+  0x04a2b7  Modulo
+  0x04a2b8  Push int:5
+  0x04a2c0  Multiply
+  0x04a2c1  SetVariable
+  0x04a2c2  Push <1B 03>
+  0x04a2c8  GetVariable
+  0x04a2c9  Return
+  0x04a2ca  Push <1B 01>
+  0x04a2d0  Push int:333
+  0x04a2d8  Push double:0.0, <2B 04 05>
+  0x04a2e8  CallFunction
+  0x04a2e9  Add2
+  0x04a2ea  DefineLocal
+  0x04a2eb  Push <1B 01>
+  0x04a2f1  GetVariable
+  0x04a2f2  Push int:598
+  0x04a2fa  Equals
+  0x04a2fb  Not
+  0x04a2fc  If -> loc4a301 (delta +2)
+  0x04a2ff  StringAdd
+  0x04a300  End
+  0x04a301  Push <1B 01>
+  0x04a307  Push <1B 01>
+  0x04a30d  GetVariable
+  0x04a30e  Push int:201
+  0x04a316  Subtract
+  0x04a317  SetVariable
+  0x04a318  Push bool:True
+  0x04a31d  Jump -> loc4a322 (delta +2)
+  0x04a320    !! unknown opcode 0xc9 - stopping
+
+--- DefineSprite id=239 frames=0 ---
+### DoInitAction @0x04ae33 len=1202 spriteId=239
+  0x04ae35  DefineFunction2 <0B > [7 ops] {
+  0x04ae38      NextFrame
+  0x04ae39      PrevFrame
+  0x04ae3a      End
+  0x04ae3b      End
+  0x04ae3c      End
+  0x04ae3d      StringLess
+  0x04ae3e      End
+  0x04ae35  }
+  0x04ae3f  Push <1B 03>
+  0x04ae45  Push int:133
+  0x04ae4d  Push int:511
+  0x04ae55  Modulo
+  0x04ae56  Push int:5
+  0x04ae5e  Multiply
+  0x04ae5f  SetVariable
+  0x04ae60  Push <1B 03>
+  0x04ae66  GetVariable
+  0x04ae67  Return
+  0x04ae68  Push <1B 01>
+  0x04ae6e  Push int:-536
+  0x04ae76  Push double:0.0, <2B 04 05>
+  0x04ae86  CallFunction
+  0x04ae87  Add2
+  0x04ae88  DefineLocal
+  0x04ae89  Push <1B 01>
+  0x04ae8f  GetVariable
+  0x04ae90  Push int:129
+  0x04ae98  Equals
+  0x04ae99  Not
+  0x04ae9a  If -> loc4ae9f (delta +2)
+  0x04ae9d  StringAdd
+  0x04ae9e  End
+  0x04ae9f  Push <1B 01>
+  0x04aea5  Push <1B 01>
+  0x04aeab  GetVariable
+  0x04aeac  Push int:862
+  0x04aeb4  Add
+  0x04aeb5  SetVariable
+  0x04aeb6  Push bool:True
+  0x04aebb  Jump -> loc4aec0 (delta +2)
+  0x04aebe    !! unknown opcode 0xc9 - stopping
+
+--- DefineSprite id=240 frames=0 ---
+### DoInitAction @0x04b632 len=1723 spriteId=240
+  0x04b634  DefineFunction2 <0B > [7 ops] {
+  0x04b637      NextFrame
+  0x04b638      PrevFrame
+  0x04b639      End
+  0x04b63a      End
+  0x04b63b      End
+  0x04b63c      StringLess
+  0x04b63d      End
+  0x04b634  }
+  0x04b63e  Push <1B 03>
+  0x04b644  Push int:1441
+  0x04b64c  Push int:511
+  0x04b654  Modulo
+  0x04b655  Push int:5
+  0x04b65d  Multiply
+  0x04b65e  SetVariable
+  0x04b65f  Push <1B 03>
+  0x04b665  GetVariable
+  0x04b666  Return
+  0x04b667  Push <1B 01>
+  0x04b66d  Push int:-2042
+  0x04b675  Push double:0.0, <2B 04 05>
+  0x04b685  CallFunction
+  0x04b686  Add2
+  0x04b687  DefineLocal
+  0x04b688  Push <1B 01>
+  0x04b68e  GetVariable
+  0x04b68f  Push int:53
+  0x04b697  Equals
+  0x04b698  Not
+  0x04b699  If -> loc4b69e (delta +2)
+  0x04b69c  StringAdd
+  0x04b69d  End
+  0x04b69e  Push <1B 01>
+  0x04b6a4  Push <1B 01>
+  0x04b6aa  GetVariable
+  0x04b6ab  Push int:267
+  0x04b6b3  Add
+  0x04b6b4  SetVariable
+  0x04b6b5  Push bool:True
+  0x04b6ba  Jump -> loc4b6bf (delta +2)
+  0x04b6bd    !! unknown opcode 0xc9 - stopping
+
+--- DefineSprite id=241 frames=0 ---
+### DoInitAction @0x04c187 len=1420 spriteId=241
+  0x04c189  DefineFunction2 <0B > [7 ops] {
+  0x04c18c      NextFrame
+  0x04c18d      PrevFrame
+  0x04c18e      End
+  0x04c18f      End
+  0x04c190      End
+  0x04c191      StringLess
+  0x04c192      End
+  0x04c189  }
+  0x04c193  Push <1B 03>
+  0x04c199  Push int:1971
+  0x04c1a1  Push int:511
+  0x04c1a9  Modulo
+  0x04c1aa  Push int:5
+  0x04c1b2  Multiply
+  0x04c1b3  SetVariable
+  0x04c1b4  Push <1B 03>
+  0x04c1ba  GetVariable
+  0x04c1bb  Return
+  0x04c1bc  Push <1B 01>
+  0x04c1c2  Push int:-1764
+  0x04c1ca  Push double:0.0, <2B 04 05>
+  0x04c1da  CallFunction
+  0x04c1db  Add2
+  0x04c1dc  DefineLocal
+  0x04c1dd  Push <1B 01>
+  0x04c1e3  GetVariable
+  0x04c1e4  Push int:426
+  0x04c1ec  Equals
+  0x04c1ed  Not
+  0x04c1ee  If -> loc4c1f3 (delta +2)
+  0x04c1f1  StringAdd
+  0x04c1f2  End
+  0x04c1f3  Push <1B 01>
+  0x04c1f9  Push <1B 01>
+  0x04c1ff  GetVariable
+  0x04c200  Push int:29
+  0x04c208  Add
+  0x04c209  SetVariable
+  0x04c20a  Push bool:True
+  0x04c20f  Jump -> loc4c214 (delta +2)
+  0x04c212    !! unknown opcode 0xc9 - stopping
+
+--- DefineSprite id=242 frames=0 ---
+### DoInitAction @0x04d2d6 len=1753 spriteId=242
+  0x04d2d8  DefineFunction2 <0B > [7 ops] {
+  0x04d2db      NextFrame
+  0x04d2dc      PrevFrame
+  0x04d2dd      End
+  0x04d2de      End
+  0x04d2df      End
+  0x04d2e0      StringLess
+  0x04d2e1      End
+  0x04d2d8  }
+  0x04d2e2  Push <1B 03>
+  0x04d2e8  Push int:2460
+  0x04d2f0  Push int:511
+  0x04d2f8  Modulo
+  0x04d2f9  Push int:5
+  0x04d301  Multiply
+  0x04d302  SetVariable
+  0x04d303  Push <1B 03>
+  0x04d309  GetVariable
+  0x04d30a  Return
+  0x04d30b  Push <1B 01>
+  0x04d311  Push int:-1818
+  0x04d319  Push double:0.0, <2B 04 05>
+  0x04d329  CallFunction
+  0x04d32a  Add2
+  0x04d32b  DefineLocal
+  0x04d32c  Push <1B 01>
+  0x04d332  GetVariable
+  0x04d333  Push int:262
+  0x04d33b  Equals
+  0x04d33c  Not
+  0x04d33d  If -> loc4d342 (delta +2)
+  0x04d340  StringAdd
+  0x04d341  End
+  0x04d342  Push <1B 01>
+  0x04d348  Push <1B 01>
+  0x04d34e  GetVariable
+  0x04d34f  Push int:256
+  0x04d357  Add
+  0x04d358  SetVariable
+  0x04d359  Push bool:True
+  0x04d35e  Jump -> loc4d363 (delta +2)
+  0x04d361    !! unknown opcode 0xc9 - stopping
+
+--- DefineSprite id=243 frames=0 ---
+### DoInitAction @0x04dd4b len=1051 spriteId=243
+  0x04dd4d  DefineFunction2 <0B > [7 ops] {
+  0x04dd50      NextFrame
+  0x04dd51      PrevFrame
+  0x04dd52      End
+  0x04dd53      End
+  0x04dd54      End
+  0x04dd55      StringLess
+  0x04dd56      End
+  0x04dd4d  }
+  0x04dd57  Push <1B 03>
+  0x04dd5d  Push int:1082
+  0x04dd65  Push int:511
+  0x04dd6d  Modulo
+  0x04dd6e  Push int:5
+  0x04dd76  Multiply
+  0x04dd77  SetVariable
+  0x04dd78  Push <1B 03>
+  0x04dd7e  GetVariable
+  0x04dd7f  Return
+  0x04dd80  Push <1B 01>
+  0x04dd86  Push int:72
+  0x04dd8e  Push double:0.0, <2B 04 05>
+  0x04dd9e  CallFunction
+  0x04dd9f  Add2
+  0x04dda0  DefineLocal
+  0x04dda1  Push <1B 01>
+  0x04dda7  GetVariable
+  0x04dda8  Push int:372
+  0x04ddb0  Equals
+  0x04ddb1  Not
+  0x04ddb2  If -> loc4ddb7 (delta +2)
+  0x04ddb5  StringAdd
+  0x04ddb6  End
+  0x04ddb7  Push <1B 01>
+  0x04ddbd  Push <1B 01>
+  0x04ddc3  GetVariable
+  0x04ddc4  Push int:577
+  0x04ddcc  Add
+  0x04ddcd  SetVariable
+  0x04ddce  Push bool:True
+  0x04ddd3  Jump -> loc4ddd8 (delta +2)
+  0x04ddd6    !! unknown opcode 0xc9 - stopping
+
+--- DefineSprite id=244 frames=0 ---
+### DoInitAction @0x04e99c len=1228 spriteId=244
+  0x04e99e  DefineFunction2 <0B > [7 ops] {
+  0x04e9a1      NextFrame
+  0x04e9a2      PrevFrame
+  0x04e9a3      End
+  0x04e9a4      End
+  0x04e9a5      End
+  0x04e9a6      StringLess
+  0x04e9a7      End
+  0x04e99e  }
+  0x04e9a8  Push <1B 03>
+  0x04e9ae  Push int:2002
+  0x04e9b6  Push int:511
+  0x04e9be  Modulo
+  0x04e9bf  Push int:5
+  0x04e9c7  Multiply
+  0x04e9c8  SetVariable
+  0x04e9c9  Push <1B 03>
+  0x04e9cf  GetVariable
+  0x04e9d0  Return
+  0x04e9d1  Push <1B 01>
+  0x04e9d7  Push int:-2117
+  0x04e9df  Push double:0.0, <2B 04 05>
+  0x04e9ef  CallFunction
+  0x04e9f0  Add2
+  0x04e9f1  DefineLocal
+  0x04e9f2  Push <1B 01>
+  0x04e9f8  GetVariable
+  0x04e9f9  Push int:228
+  0x04ea01  Equals
+  0x04ea02  Not
+  0x04ea03  If -> loc4ea08 (delta +2)
+  0x04ea06  StringAdd
+  0x04ea07  End
+  0x04ea08  Push <1B 01>
+  0x04ea0e  Push <1B 01>
+  0x04ea14  GetVariable
+  0x04ea15  Push int:157
+  0x04ea1d  Subtract
+  0x04ea1e  SetVariable
+  0x04ea1f  Push bool:True
+  0x04ea24  Jump -> loc4ea29 (delta +2)
+  0x04ea27    !! unknown opcode 0xc9 - stopping
+
+--- DefineSprite id=245 frames=0 ---
+### DoInitAction @0x04f1c2 len=1322 spriteId=245
+  0x04f1c4  DefineFunction2 <0B > [7 ops] {
+  0x04f1c7      NextFrame
+  0x04f1c8      PrevFrame
+  0x04f1c9      End
+  0x04f1ca      End
+  0x04f1cb      End
+  0x04f1cc      StringLess
+  0x04f1cd      End
+  0x04f1c4  }
+  0x04f1ce  Push <1B 03>
+  0x04f1d4  Push int:735
+  0x04f1dc  Push int:511
+  0x04f1e4  Modulo
+  0x04f1e5  Push int:5
+  0x04f1ed  Multiply
+  0x04f1ee  SetVariable
+  0x04f1ef  Push <1B 03>
+  0x04f1f5  GetVariable
+  0x04f1f6  Return
+  0x04f1f7  Push <1B 01>
+  0x04f1fd  Push int:-217
+  0x04f205  Push double:0.0, <2B 04 05>
+  0x04f215  CallFunction
+  0x04f216  Add2
+  0x04f217  DefineLocal
+  0x04f218  Push <1B 01>
+  0x04f21e  GetVariable
+  0x04f21f  Push int:903
+  0x04f227  Equals
+  0x04f228  Not
+  0x04f229  If -> loc4f22e (delta +2)
+  0x04f22c  StringAdd
+  0x04f22d  End
+  0x04f22e  Push <1B 01>
+  0x04f234  Push <1B 01>
+  0x04f23a  GetVariable
+  0x04f23b  Push int:48
+  0x04f243  Subtract
+  0x04f244  SetVariable
+  0x04f245  Push bool:True
+  0x04f24a  Jump -> loc4f24f (delta +2)
+  0x04f24d    !! unknown opcode 0xc9 - stopping
+
+--- DefineSprite id=246 frames=0 ---
+### DoInitAction @0x04f8fd len=1010 spriteId=246
+  0x04f8ff  DefineFunction2 <0B > [7 ops] {
+  0x04f902      NextFrame
+  0x04f903      PrevFrame
+  0x04f904      End
+  0x04f905      End
+  0x04f906      End
+  0x04f907      StringLess
+  0x04f908      End
+  0x04f8ff  }
+  0x04f909  Push <1B 03>
+  0x04f90f  Push int:619
+  0x04f917  Push int:511
+  0x04f91f  Modulo
+  0x04f920  Push int:5
+  0x04f928  Multiply
+  0x04f929  SetVariable
+  0x04f92a  Push <1B 03>
+  0x04f930  GetVariable
+  0x04f931  Return
+  0x04f932  Push <1B 01>
+  0x04f938  Push int:-305
+  0x04f940  Push double:0.0, <2B 04 05>
+  0x04f950  CallFunction
+  0x04f951  Add2
+  0x04f952  DefineLocal
+  0x04f953  Push <1B 01>
+  0x04f959  GetVariable
+  0x04f95a  Push int:235
+  0x04f962  Equals
+  0x04f963  Not
+  0x04f964  If -> loc4f969 (delta +2)
+  0x04f967  StringAdd
+  0x04f968  End
+  0x04f969  Push <1B 01>
+  0x04f96f  Push <1B 01>
+  0x04f975  GetVariable
+  0x04f976  Push int:261
+  0x04f97e  Add
+  0x04f97f  SetVariable
+  0x04f980  Push bool:True
+  0x04f985  Jump -> loc4f98a (delta +2)
+  0x04f988    !! unknown opcode 0xc9 - stopping
+
+### DoInitAction @0x04fcf5 len=57 spriteId=30
+  0x04fcf7  Push 'Fish'
+  0x04fd00  GetVariable
+  0x04fd01  Push 'enemy', int:2, 'Object'
+  0x04fd18  GetVariable
+  0x04fd19  Push 'registerClass'
+  0x04fd2b  CallMethod
+  0x04fd2c  Pop
+  0x04fd2d  End
+
+### DoInitAction @0x04fd34 len=70 spriteId=54
+  0x04fd36  Push 'nhn.game.Digit'
+  0x04fd49  GetVariable
+  0x04fd4a  Push 'scorenum', int:2, 'Object'
+  0x04fd64  GetVariable
+  0x04fd65  Push 'registerClass'
+  0x04fd77  CallMethod
+  0x04fd78  Pop
+  0x04fd79  End
+
+### DoInitAction @0x04fd80 len=57 spriteId=10
+  0x04fd82  Push 'Fish'
+  0x04fd8b  GetVariable
+  0x04fd8c  Push 'shark', int:2, 'Object'
+  0x04fda3  GetVariable
+  0x04fda4  Push 'registerClass'
+  0x04fdb6  CallMethod
+  0x04fdb7  Pop
+  0x04fdb8  End
+
+### DoAction @0x052544 len=2869
+  0x052544  DefineFunction2 <0B > [7 ops] {
+  0x052547      NextFrame
+  0x052548      PrevFrame
+  0x052549      End
+  0x05254a      End
+  0x05254b      End
+  0x05254c      StringLess
+  0x05254d      End
+  0x052544  }
+  0x05254e  Push <1B 03>
+  0x052554  Push int:584
+  0x05255c  Push int:511
+  0x052564  Modulo
+  0x052565  Push int:5
+  0x05256d  Multiply
+  0x05256e  SetVariable
+  0x05256f  Push <1B 03>
+  0x052575  GetVariable
+  0x052576  Return
+  0x052577  Push <1B 01>
+  0x05257d  Push int:474
+  0x052585  Push double:0.0, <2B 04 05>
+  0x052595  CallFunction
+  0x052596  Add2
+  0x052597  DefineLocal
+  0x052598  Push <1B 01>
+  0x05259e  GetVariable
+  0x05259f  Push int:839
+  0x0525a7  Equals
+  0x0525a8  Not
+  0x0525a9  If -> loc525ae (delta +2)
+  0x0525ac  StringAdd
+  0x0525ad  End
+  0x0525ae  Push <1B 01>
+  0x0525b4  Push <1B 01>
+  0x0525ba  GetVariable
+  0x0525bb  Push int:169
+  0x0525c3  Subtract
+  0x0525c4  SetVariable
+  0x0525c5  Push bool:True
+  0x0525ca  Jump -> loc525cf (delta +2)
+  0x0525cd    !! unknown opcode 0xc9 - stopping
+
+--- DefineSprite id=84 frames=1 ---
+--- DefineSprite id=89 frames=4 ---
+--- DefineSprite id=101 frames=5 ---
+--- DefineSprite id=103 frames=30 ---
+--- DefineSprite id=104 frames=65 ---
+  ### DoAction @0x06057d len=2
+    0x06057d  Stop
+    0x06057e  End
+
+--- DefineSprite id=115 frames=5 ---
+--- DefineSprite id=126 frames=5 ---
+--- DefineSprite id=137 frames=5 ---
+--- DefineSprite id=148 frames=5 ---
+--- DefineSprite id=159 frames=5 ---
+--- DefineSprite id=170 frames=5 ---
+--- DefineSprite id=181 frames=5 ---
+--- DefineSprite id=192 frames=5 ---
+--- DefineSprite id=203 frames=5 ---
+--- DefineSprite id=204 frames=10 ---
+--- DefineSprite id=206 frames=35 ---
+  ### DoAction @0x07dcdb len=2
+    0x07dcdb  Stop
+    0x07dcdc  End
+
+  ### DoAction @0x07dead len=943
+    0x07dead  DefineFunction2 <0B > [7 ops] {
+    0x07deb0      NextFrame
+    0x07deb1      PrevFrame
+    0x07deb2      End
+    0x07deb3      End
+    0x07deb4      End
+    0x07deb5      StringLess
+    0x07deb6      End
+    0x07dead  }
+    0x07deb7  Push <1B 03>
+    0x07debd  Push int:1202
+    0x07dec5  Push int:511
+    0x07decd  Modulo
+    0x07dece  Push int:5
+    0x07ded6  Multiply
+    0x07ded7  SetVariable
+    0x07ded8  Push <1B 03>
+    0x07dede  GetVariable
+    0x07dedf  Return
+    0x07dee0  Push <1B 01>
+    0x07dee6  Push int:-650
+    0x07deee  Push double:0.0, <2B 04 05>
+    0x07defe  CallFunction
+    0x07deff  Add2
+    0x07df00  DefineLocal
+    0x07df01  Push <1B 01>
+    0x07df07  GetVariable
+    0x07df08  Push int:250
+    0x07df10  Equals
+    0x07df11  Not
+    0x07df12  If -> loc7df17 (delta +2)
+    0x07df15  StringAdd
+    0x07df16  End
+    0x07df17  Push <1B 01>
+    0x07df1d  Push <1B 01>
+    0x07df23  GetVariable
+    0x07df24  Push int:402
+    0x07df2c  Add
+    0x07df2d  SetVariable
+    0x07df2e  Push bool:True
+    0x07df33  Jump -> loc7df38 (delta +2)
+    0x07df36    !! unknown opcode 0xc9 - stopping
+
+--- DefineSprite id=207 frames=1 ---
+--- DefineSprite id=208 frames=1 ---
+--- DefineSprite id=214 frames=1 ---
+  ### DoAction @0x07e5c7 len=1585
+    0x07e5c7  DefineFunction2 <0B > [7 ops] {
+    0x07e5ca      NextFrame
+    0x07e5cb      PrevFrame
+    0x07e5cc      End
+    0x07e5cd      End
+    0x07e5ce      End
+    0x07e5cf      StringLess
+    0x07e5d0      End
+    0x07e5c7  }
+    0x07e5d1  Push <1B 03>
+    0x07e5d7  Push int:1815
+    0x07e5df  Push int:511
+    0x07e5e7  Modulo
+    0x07e5e8  Push int:5
+    0x07e5f0  Multiply
+    0x07e5f1  SetVariable
+    0x07e5f2  Push <1B 03>
+    0x07e5f8  GetVariable
+    0x07e5f9  Return
+    0x07e5fa  Push <1B 01>
+    0x07e600  Push int:-801
+    0x07e608  Push double:0.0, <2B 04 05>
+    0x07e618  CallFunction
+    0x07e619  Add2
+    0x07e61a  DefineLocal
+    0x07e61b  Push <1B 01>
+    0x07e621  GetVariable
+    0x07e622  Push int:609
+    0x07e62a  Equals
+    0x07e62b  Not
+    0x07e62c  If -> loc7e631 (delta +2)
+    0x07e62f  StringAdd
+    0x07e630  End
+    0x07e631  Push <1B 01>
+    0x07e637  Push <1B 01>
+    0x07e63d  GetVariable
+    0x07e63e  Push int:35
+    0x07e646  Subtract
+    0x07e647  SetVariable
+    0x07e648  Push bool:True
+    0x07e64d  Jump -> loc7e652 (delta +2)
+    0x07e650    !! unknown opcode 0xc9 - stopping
+
+--- DefineSprite id=215 frames=10 ---
+  ### DoAction @0x07ed02 len=2
+    0x07ed02  Stop
+    0x07ed03  End
+
+--- DefineSprite id=219 frames=23 ---
+--- DefineSprite id=221 frames=10 ---
+  ### DoAction @0x086b1a len=2
+    0x086b1a  Stop
+    0x086b1b  End
+
+--- DefineSprite id=229 frames=23 ---
+--- DefineSprite id=230 frames=68 ---
+--- DefineSprite id=231 frames=1 ---
+--- DefineSprite id=232 frames=1 ---
+--- DefineSprite id=234 frames=1 ---

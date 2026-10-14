@@ -1,0 +1,353 @@
+# swf/Qua01.swf  v7  body=560052 bytes  (84 binary names seen)
+
+  ### DoAction @0x00364a len=14  [root/sprite6]
+     13898  Push 15
+     13906  RandomNumber
+     13907  GotoFrame2 1
+     13909  End
+
+  ### DoAction @0x0036d0 len=7  [root/sprite7]
+     14032  GotoFrame 2
+     14037  Play
+     14038  End
+
+  ### DoAction @0x004a53 len=7  [root/sprite17]
+     19027  GotoFrame 2
+     19032  Play
+     19033  End
+
+  ### DoAction @0x0065a5 len=7  [root/sprite24]
+     26021  GotoFrame 2
+     26026  Play
+     26027  End
+
+  ### DoAction @0x0080d6 len=7  [root/sprite29]
+     32982  GotoFrame 2
+     32987  Play
+     32988  End
+
+### DoAction @0x00a43a len=1080  [root]
+   42042  DefineFunction2 "" {
+   42042    NextFrame
+   42042    PrevFrame
+   42042    End
+   42042  }
+   42052  Push «03»
+   42058  Push 2011
+   42066  Push 511
+   42074  Modulo
+   42075  Push 5
+   42083  Multiply
+   42084  SetVariable
+   42085  Push «03»
+   42091  GetVariable
+   42092  Return
+
+  ### DoAction @0x00ad68 len=2  [root/sprite64]
+     44392  Stop
+     44393  End
+
+  ### DoAction @0x047046 len=2  [root/sprite78]
+    290886  Stop
+    290887  End
+
+### DoInitAction spriteId=235 @0x047cd1 len=1605
+  294099  DefineFunction2 "" {
+  294099    NextFrame
+  294099    PrevFrame
+  294099    End
+  294099  }
+  294109  Push «03»
+  294115  Push 1713
+  294123  Push 511
+  294131  Modulo
+  294132  Push 5
+  294140  Multiply
+  294141  SetVariable
+  294142  Push «03»
+  294148  GetVariable
+  294149  Return
+
+### DoInitAction spriteId=236 @0x0486e5 len=1463
+  296679  DefineFunction2 "" {
+  296679    NextFrame
+  296679    PrevFrame
+  296679    End
+  296679  }
+  296689  Push «03»
+  296695  Push 2007
+  296703  Push 511
+  296711  Modulo
+  296712  Push 5
+  296720  Multiply
+  296721  SetVariable
+  296722  Push «03»
+  296728  GetVariable
+  296729  Return
+
+### DoInitAction spriteId=237 @0x049244 len=1494
+  299590  DefineFunction2 "" {
+  299590    NextFrame
+  299590    PrevFrame
+  299590    End
+  299590  }
+  299600  Push «03»
+  299606  Push 78
+  299614  Push 511
+  299622  Modulo
+  299623  Push 5
+  299631  Multiply
+  299632  SetVariable
+  299633  Push «03»
+  299639  GetVariable
+  299640  Return
+
+### DoInitAction spriteId=238 @0x04a295 len=1458
+  303767  DefineFunction2 "" {
+  303767    NextFrame
+  303767    PrevFrame
+  303767    End
+  303767  }
+  303777  Push «03»
+  303783  Push 564
+  303791  Push 511
+  303799  Modulo
+  303800  Push 5
+  303808  Multiply
+  303809  SetVariable
+  303810  Push «03»
+  303816  GetVariable
+  303817  Return
+
+### DoInitAction spriteId=239 @0x04ae33 len=1202
+  306741  DefineFunction2 "" {
+  306741    NextFrame
+  306741    PrevFrame
+  306741    End
+  306741  }
+  306751  Push «03»
+  306757  Push 133
+  306765  Push 511
+  306773  Modulo
+  306774  Push 5
+  306782  Multiply
+  306783  SetVariable
+  306784  Push «03»
+  306790  GetVariable
+  306791  Return
+
+### DoInitAction spriteId=240 @0x04b632 len=1723
+  308788  DefineFunction2 "" {
+  308788    NextFrame
+  308788    PrevFrame
+  308788    End
+  308788  }
+  308798  Push «03»
+  308804  Push 1441
+  308812  Push 511
+  308820  Modulo
+  308821  Push 5
+  308829  Multiply
+  308830  SetVariable
+  308831  Push «03»
+  308837  GetVariable
+  308838  Return
+
+### DoInitAction spriteId=241 @0x04c187 len=1420
+  311689  DefineFunction2 "" {
+  311689    NextFrame
+  311689    PrevFrame
+  311689    End
+  311689  }
+  311699  Push «03»
+  311705  Push 1971
+  311713  Push 511
+  311721  Modulo
+  311722  Push 5
+  311730  Multiply
+  311731  SetVariable
+  311732  Push «03»
+  311738  GetVariable
+  311739  Return
+
+### DoInitAction spriteId=242 @0x04d2d6 len=1753
+  316120  DefineFunction2 "" {
+  316120    NextFrame
+  316120    PrevFrame
+  316120    End
+  316120  }
+  316130  Push «03»
+  316136  Push 2460
+  316144  Push 511
+  316152  Modulo
+  316153  Push 5
+  316161  Multiply
+  316162  SetVariable
+  316163  Push «03»
+  316169  GetVariable
+  316170  Return
+
+### DoInitAction spriteId=243 @0x04dd4b len=1051
+  318797  DefineFunction2 "" {
+  318797    NextFrame
+  318797    PrevFrame
+  318797    End
+  318797  }
+  318807  Push «03»
+  318813  Push 1082
+  318821  Push 511
+  318829  Modulo
+  318830  Push 5
+  318838  Multiply
+  318839  SetVariable
+  318840  Push «03»
+  318846  GetVariable
+  318847  Return
+
+### DoInitAction spriteId=244 @0x04e99c len=1228
+  321950  DefineFunction2 "" {
+  321950    NextFrame
+  321950    PrevFrame
+  321950    End
+  321950  }
+  321960  Push «03»
+  321966  Push 2002
+  321974  Push 511
+  321982  Modulo
+  321983  Push 5
+  321991  Multiply
+  321992  SetVariable
+  321993  Push «03»
+  321999  GetVariable
+  322000  Return
+
+### DoInitAction spriteId=245 @0x04f1c2 len=1322
+  324036  DefineFunction2 "" {
+  324036    NextFrame
+  324036    PrevFrame
+  324036    End
+  324036  }
+  324046  Push «03»
+  324052  Push 735
+  324060  Push 511
+  324068  Modulo
+  324069  Push 5
+  324077  Multiply
+  324078  SetVariable
+  324079  Push «03»
+  324085  GetVariable
+  324086  Return
+
+### DoInitAction spriteId=246 @0x04f8fd len=1010
+  325887  DefineFunction2 "" {
+  325887    NextFrame
+  325887    PrevFrame
+  325887    End
+  325887  }
+  325897  Push «03»
+  325903  Push 619
+  325911  Push 511
+  325919  Modulo
+  325920  Push 5
+  325928  Multiply
+  325929  SetVariable
+  325930  Push «03»
+  325936  GetVariable
+  325937  Return
+
+### DoInitAction spriteId=30 @0x04fcf5 len=57
+  326903  Push "Fish"
+  326912  GetVariable
+  326913  Push "enemy", 2, "Object"
+  326936  GetVariable
+  326937  Push "registerClass"
+  326955  CallMethod
+  326956  Pop
+  326957  End
+
+### DoInitAction spriteId=54 @0x04fd34 len=70
+  326966  Push "nhn.game.Digit"
+  326985  GetVariable
+  326986  Push "scorenum", 2, "Object"
+  327012  GetVariable
+  327013  Push "registerClass"
+  327031  CallMethod
+  327032  Pop
+  327033  End
+
+### DoInitAction spriteId=10 @0x04fd80 len=57
+  327042  Push "Fish"
+  327051  GetVariable
+  327052  Push "shark", 2, "Object"
+  327075  GetVariable
+  327076  Push "registerClass"
+  327094  CallMethod
+  327095  Pop
+  327096  End
+
+### DoAction @0x052544 len=2869  [root]
+  337220  DefineFunction2 "" {
+  337220    NextFrame
+  337220    PrevFrame
+  337220    End
+  337220  }
+  337230  Push «03»
+  337236  Push 584
+  337244  Push 511
+  337252  Modulo
+  337253  Push 5
+  337261  Multiply
+  337262  SetVariable
+  337263  Push «03»
+  337269  GetVariable
+  337270  Return
+
+  ### DoAction @0x06057d len=2  [root/sprite104]
+    394621  Stop
+    394622  End
+
+  ### DoAction @0x07dcdb len=2  [root/sprite206]
+    515291  Stop
+    515292  End
+
+  ### DoAction @0x07dead len=943  [root/sprite206]
+    515757  DefineFunction2 "" {
+    515757    NextFrame
+    515757    PrevFrame
+    515757    End
+    515757  }
+    515767  Push «03»
+    515773  Push 1202
+    515781  Push 511
+    515789  Modulo
+    515790  Push 5
+    515798  Multiply
+    515799  SetVariable
+    515800  Push «03»
+    515806  GetVariable
+    515807  Return
+
+  ### DoAction @0x07e5c7 len=1585  [root/sprite214]
+    517575  DefineFunction2 "" {
+    517575    NextFrame
+    517575    PrevFrame
+    517575    End
+    517575  }
+    517585  Push «03»
+    517591  Push 1815
+    517599  Push 511
+    517607  Modulo
+    517608  Push 5
+    517616  Multiply
+    517617  SetVariable
+    517618  Push «03»
+    517624  GetVariable
+    517625  Return
+
+  ### DoAction @0x07ed02 len=2  [root/sprite215]
+    519426  Stop
+    519427  End
+
+  ### DoAction @0x086b1a len=2  [root/sprite221]
+    551706  Stop
+    551707  End

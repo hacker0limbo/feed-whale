@@ -1,0 +1,4 @@
+#!/bin/zsh
+# JPEXS Free Flash Decompiler wrapper — puts the keg-only Homebrew OpenJDK on PATH.
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+exec "$(dirname "$0")/ffdec/ffdec.sh" "$@"

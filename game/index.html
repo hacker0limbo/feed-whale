@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <!-- viewport-fit=cover is what makes env(safe-area-inset-*) non-zero on notched phones -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>喂食鲸 · HTML5 复刻</title>
+
+    <!-- PWA: on iPhone the only way to lose Safari's toolbars is "add to home screen",
+         which launches the manifest's standalone window instead of a browser tab. -->
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <meta name="theme-color" content="#003366" />
+    <link rel="icon" href="./icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="喂食鲸" />
+    <!-- black-translucent lets the stage run under the status bar; the safe-area
+         padding in the stylesheet keeps the controls clear of the notch and home bar -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  </head>
+  <body>
+    <main>
+      <div id="frame">
+        <canvas id="stage" width="550" height="450"></canvas>
+      </div>
+      <!-- touch controls land here; in flow so they never cover the canvas -->
+      <div id="controls"></div>
+      <!-- empty unless boot fails, in which case main.ts writes the error here -->
+      <p id="status"></p>
+    </main>
+
+    <!-- Shown while the assets load, then handed straight over to the game's own
+         title screen — there is no host-supplied start dialog. -->
+    <div id="loading">
+      <p>载 入 中<span class="dots">…</span></p>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

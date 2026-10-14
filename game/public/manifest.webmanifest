@@ -1,0 +1,34 @@
+{
+  "name": "喂食鲸 · Baby Whale Qua",
+  "short_name": "喂食鲸",
+  "description": "《喂食鲸》HTML5 单机复刻 —— 方向键或虚拟摇杆移动，吃掉比自己小的鱼，躲开大鱼和鲨鱼。",
+  "lang": "zh-CN",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "display_override": ["fullscreen", "standalone"],
+  "orientation": "any",
+  "background_color": "#003366",
+  "theme_color": "#003366",
+  "categories": ["games"],
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

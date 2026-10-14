@@ -1,0 +1,487 @@
+:root {
+  color-scheme: dark;
+  --ink: #cfd8e3;
+  --dim: #8a97a6;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  /* single-finger drags belong to the joystick, not to the browser: kill panning
+     and pull-to-refresh, but leave pinch-zoom available */
+  touch-action: pinch-zoom;
+  overscroll-behavior: none;
+  background: radial-gradient(circle at 50% 0%, #16222e 0%, #0b1015 60%);
+  color: var(--ink);
+  font: 14px/1.6 system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  /* Fill the window so View.fit() can reason from innerWidth/innerHeight directly. */
+  width: 100%;
+  /* Keep everything clear of the notch, the home indicator and rounded corners.
+     View.fit() reads these paddings back, so the stage shrinks to match. */
+  padding:
+    calc(8px + env(safe-area-inset-top, 0px))
+    calc(8px + env(safe-area-inset-right, 0px))
+    calc(8px + env(safe-area-inset-bottom, 0px))
+    calc(8px + env(safe-area-inset-left, 0px));
+}
+
+/* touch controls: in flow, so they never sit on top of the canvas */
+/* Touch controls float over the stage so the game can use the whole screen.
+   The layer itself must not swallow taps meant for the canvas. */
+#controls {
+  display: none;
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+#controls.has-touch { display: block; }
+
+#frame {
+  position: relative;
+  /* line-height 0 kills the inline-block gap under the canvas, so the overlay
+     has to put a normal line box back for its own text */
+  line-height: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px #000a, 0 0 0 1px #ffffff14;
+}
+
+#stage {
+  display: block;
+  background: #003366;
+  /* the source art is low resolution and Flash scaled it smoothly too */
+  image-rendering: auto;
+}
+
+#status {
+  margin: 0;
+  /* Only ever used for a boot failure, so it is pinned out of the way rather than
+     in flow: the stage gets the whole viewport, and on a phone this small dim line
+     would otherwise sit on top of it */
+  position: fixed;
+  left: calc(8px + env(safe-area-inset-left, 0px));
+  bottom: calc(4px + env(safe-area-inset-bottom, 0px));
+  max-width: 60vw;
+  font-size: 11px;
+  color: var(--dim);
+  opacity: .6;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Loading splash.  It hands over to the game's own title screen as soon as the
+   assets are in, so it is the only thing on screen until then. */
+#loading {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 30%, #0d3a5c 0%, #041320 70%);
+}
+
+#loading[hidden] { display: none; }
+
+#loading p {
+  margin: 0;
+  /* scales with the viewport so it reads the same on a phone and a monitor;
+     letter-spacing is in em, so it grows with the font automatically */
+  font-size: clamp(24px, 5vmin, 36px);
+  letter-spacing: .3em;
+  color: #bfd9ea;
+}
+
+#loading .dots {
+  display: inline-block;
+  animation: loading-dots 1.2s steps(4, end) infinite;
+  overflow: hidden;
+  vertical-align: bottom;
+  width: 1em;
+  text-align: left;
+}
+
+@keyframes loading-dots {
+  0% { clip-path: inset(0 100% 0 0); }
+  25% { clip-path: inset(0 66% 0 0); }
+  50% { clip-path: inset(0 33% 0 0); }
+  75%, 100% { clip-path: inset(0 0 0 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #loading .dots { animation: none; }
+}
+
+/* Floating virtual joystick.  Same eight digital directions the arrow keys
+   produce; see Input.buildStick() for why it is not analog. */
+.stick {
+  /* placed at the touch point by Input.buildStick(); translate(-50%,-50%) puts the
+     element's centre on it */
+  position: fixed;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity .12s ease;
+  /* purely decorative: events come from the canvas and the window */
+  pointer-events: none;
+  width: var(--stick, 132px);
+  height: var(--stick, 132px);
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 45%, #ffffff1f, #ffffff0d 70%);
+  border: 1px solid #ffffff33;
+  backdrop-filter: blur(4px);
+  touch-action: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.stick-ring {
+  position: absolute;
+  inset: 50%;
+  width: calc(var(--stick, 132px) * 0.62);
+  height: calc(var(--stick, 132px) * 0.62);
+  margin: calc(var(--stick, 132px) * -0.31) 0 0 calc(var(--stick, 132px) * -0.31);
+  border-radius: 50%;
+  border: 1px dashed #ffffff30;
+  pointer-events: none;
+}
+
+.stick-knob {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(var(--stick, 132px) * 0.42);
+  height: calc(var(--stick, 132px) * 0.42);
+  margin: calc(var(--stick, 132px) * -0.21) 0 0 calc(var(--stick, 132px) * -0.21);
+  border-radius: 50%;
+  background: linear-gradient(180deg, #ffffff42, #ffffff1c);
+  border: 1px solid #ffffff55;
+  box-shadow: 0 2px 10px #0006;
+  pointer-events: none;
+  transition: background .12s ease;
+}
+
+.stick.active .stick-knob {
+  background: linear-gradient(180deg, #ffffff6b, #ffffff33);
+}
+
+/* nothing is drawn until the stage is touched */
+.stick.shown { opacity: 1; }
+
+/* Landscape: game on the left, controls in their own strip on the right. */
+@media (orientation: landscape) {
+  main {
+    flex-direction: row;
+    gap: 8px;
+  }
+}
+
+/* Phones get a slightly smaller stick so it occludes less of the play area. */
+@media (orientation: landscape) and (max-height: 500px) {
+  :root { --stick: 116px; }
+}
+
+@media (orientation: portrait) and (max-height: 700px) {
+  :root { --stick: 118px; }
+}
+
+/* ==========================================================================
+   Pause menu and settings panel.
+   Additions, not part of the original SWF; they borrow the game's own palette.
+   ========================================================================== */
+
+#pause-btn,
+#settings-btn,
+#fs-btn {
+  position: fixed;
+  top: calc(10px + env(safe-area-inset-top, 0px));
+  z-index: 30;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  line-height: 1;
+  color: #eaf6ff;
+  background: #0a1c2b80;
+  border: 1px solid #ffffff2e;
+  border-radius: 15px;
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#pause-btn,
+#settings-btn { left: calc(10px + env(safe-area-inset-left, 0px)); }
+
+#fs-btn { right: calc(10px + env(safe-area-inset-right, 0px)); }
+
+#pause-btn:hover,
+#settings-btn:hover,
+#fs-btn:hover { background: #12314a99; }
+
+#pause-btn:active,
+#settings-btn:active,
+#fs-btn:active { transform: translateY(1px); }
+
+#pause-btn[hidden],
+#settings-btn[hidden],
+#fs-btn[hidden] { display: none; }
+
+#overlays {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding:
+    calc(12px + env(safe-area-inset-top, 0px))
+    calc(12px + env(safe-area-inset-right, 0px))
+    calc(12px + env(safe-area-inset-bottom, 0px))
+    calc(12px + env(safe-area-inset-left, 0px));
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+#overlays[hidden] { display: none; }
+
+/* Heavier than the game-over card's 30%: this has to read as "stopped". */
+#overlays .scrim {
+  position: absolute;
+  inset: 0;
+  background: #04101ccc;
+}
+
+.panel {
+  position: relative;
+  min-width: min(320px, 100%);
+  max-width: min(420px, 100%);
+  max-height: 100%;
+  overflow: auto;
+  padding: 22px 24px;
+  border-radius: 16px;
+  background: #07131dea;
+  border: 1px solid #ffffff1f;
+  box-shadow: 0 24px 70px #000a;
+  backdrop-filter: blur(6px);
+  line-height: 1.5;
+}
+
+.panel[hidden] { display: none; }
+
+.panel h2 {
+  margin: 0 0 4px;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-align: center;
+  color: #eaf6ff;
+}
+
+.panel .actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+  /* pinned to the bottom of the scrollport: in phone landscape the panel is
+     clamped to the viewport height, and the close button must not need a scroll */
+  position: sticky;
+  bottom: 0;
+  padding-top: 10px;
+  background: linear-gradient(180deg, transparent, #07131d 34%);
+}
+
+.panel .actions button {
+  font: inherit;
+  font-size: 14px;
+  padding: 11px 16px;
+  min-height: 44px;
+  border-radius: 10px;
+  border: 1px solid #ffffff2e;
+  background: #ffffff14;
+  color: #dbe9f5;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.panel .actions button:hover { background: #ffffff24; }
+.panel .actions button:active { transform: translateY(1px); }
+.panel .actions button:disabled { opacity: .4; cursor: default; transform: none; }
+.panel .actions button.primary { background: linear-gradient(180deg, #1c6fa8, #10496f); border-color: #63c8ff66; color: #eaf6ff; }
+.panel .actions button.danger { background: #7a2020; border-color: #ff8b8b66; color: #ffe9e9; }
+
+/* Standard tablist: the buttons are the only tabbable stops, arrow keys move
+   between them, and the panel below is labelled by the selected one. */
+.tabs {
+  display: flex;
+  gap: 4px;
+  margin: 10px 0 12px;
+  padding: 3px;
+  border-radius: 11px;
+  background: #ffffff0f;
+  border: 1px solid #ffffff14;
+}
+
+.tabs button {
+  flex: 1 1 0;
+  font: inherit;
+  font-size: 13px;
+  padding: 8px 10px;
+  min-height: 36px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #9fb6c8;
+  cursor: pointer;
+}
+
+.tabs button:hover { color: #dbe9f5; }
+.tabs button[aria-selected="true"] { background: #1c6fa8; color: #eaf6ff; }
+.tabs button:focus-visible { outline: 2px solid #6cc4ff; outline-offset: 2px; }
+
+.rows { display: flex; flex-direction: column; }
+.rows[hidden] { display: none; }
+
+.rows .group {
+  margin: 14px 0 2px;
+  font-size: 11px;
+  letter-spacing: .12em;
+  color: var(--dim);
+}
+
+.rows .group:first-child { margin-top: 0; }
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 2px 0;
+  cursor: pointer;
+}
+
+.row .text { flex: 1 1 auto; display: flex; flex-direction: column; }
+.row .text b { font-weight: 500; font-size: 14px; color: #dbe9f5; }
+.row .text i { font-style: normal; font-size: 11px; color: var(--dim); }
+
+/* switches are real checkboxes: tabbable, space-togglable, readable by AT */
+.row input[type="checkbox"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.row .track {
+  position: relative;
+  flex: 0 0 auto;
+  width: 46px;
+  height: 26px;
+  border-radius: 999px;
+  background: #ffffff1a;
+  border: 1px solid #ffffff2e;
+  transition: background .15s ease, border-color .15s ease;
+}
+
+.row .track::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #cfe3f2;
+  transition: transform .15s ease;
+}
+
+.row input:checked ~ .track { background: #2f8fd0; border-color: #4aa8e6; }
+.row input:checked ~ .track::after { transform: translateX(20px); }
+.row input:focus-visible ~ .track { outline: 2px solid #6cc4ff; outline-offset: 2px; }
+
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 0 0 auto;
+}
+
+.stepper button {
+  width: 34px;
+  height: 34px;
+  font: inherit;
+  font-size: 16px;
+  line-height: 1;
+  color: #dbe9f5;
+  background: #ffffff14;
+  border: 1px solid #ffffff2e;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.stepper button:hover:not(:disabled) { background: #ffffff22; }
+.stepper button:disabled { opacity: .35; cursor: default; }
+.stepper output {
+  min-width: 2.4em;
+  text-align: center;
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+  color: #eaf6ff;
+}
+
+/* Landscape phones: trim the chrome so the panel fits with less scrolling.
+   40px is still a comfortable touch target. */
+@media (max-height: 520px) {
+  .panel { padding: 16px 18px; }
+  .panel h2 { font-size: 15px; margin-bottom: 0; }
+  .row { min-height: 40px; }
+  .panel .actions { margin-top: 12px; gap: 6px; }
+  .panel .actions button { min-height: 40px; padding: 8px 14px; }
+  .tabs { margin: 8px 0 10px; }
+  .rows .group { margin: 10px 0 0; }
+}
+
+/* 「关于」 tab: prose, not switches. */
+.about[hidden] { display: none; }
+.about h3 {
+  margin: 14px 0 6px;
+  font-size: 12px;
+  letter-spacing: .12em;
+  font-weight: 600;
+  color: #86b6d6;
+}
+.about h3:first-child { margin-top: 0; }
+.about ul { margin: 0; padding-left: 1.1em; }
+.about li { margin: 0 0 6px; font-size: 13px; line-height: 1.6; color: #c6d7e4; }
+.about b { color: #eaf6ff; font-weight: 600; }
+.about .dim {
+  margin: 16px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid #ffffff14;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--dim);
+}
