@@ -71,7 +71,7 @@ export class Assets {
     return this.resImages.get(name);
   }
 
-  /** Button art from Qua_RES.swf: [up, over, down]. */
+  /** Button art from Qua_RES.swf; a one-element list, `[0]` is the up state. */
   resButton(name: string): HTMLImageElement[] | undefined {
     return this.resButtons.get(name);
   }
@@ -110,9 +110,6 @@ export class Assets {
       ["1_@qua_intro.jpg", "@qua_intro"],
       ["2_@howto.png", "@howto"],
       ["3_@gameover02.png", "@gameover02"],
-      ["22.png", "btn97a"],
-      ["25.png", "btn97b"],
-      ["36.png", "btn214"],
     ] as const) {
       jobs.push(
         (async () => {
@@ -120,10 +117,12 @@ export class Assets {
         })(),
       );
     }
+    // Only the up state ships: every call site draws `art[0]`, and the over /
+    // down / hittest frames are another 17 KB that never reaches the canvas.
+    // (The array stays so `art[0]` keeps working; see Game.buildIntro.)
     for (const [id, name] of [
       ["27", "@b_qhowto01"],
       ["29", "@b_qstart01"],
-      ["31", "@b_qrank01"],
       ["33", "@b_qgototop01"],
       ["35", "@b_qagain01"],
     ] as const) {
@@ -131,14 +130,7 @@ export class Assets {
         (async () => {
           const dir = `${BASE}res/buttons/DefineButton2_${id}_${name}`;
           try {
-            const up = await loadImage(`${dir}/1_up.png`);
-            let over = up;
-            try {
-              over = await loadImage(`${dir}/2_over.png`);
-            } catch {
-              /* some buttons ship no over state */
-            }
-            this.resButtons.set(name, [up, over]);
+            this.resButtons.set(name, [await loadImage(`${dir}/1_up.png`)]);
           } catch {
             /* button art is optional; the port falls back to a drawn label */
           }
