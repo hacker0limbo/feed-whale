@@ -6,8 +6,9 @@ AI 使用 DeepSeek V4.1 Flash + ZCode.
 
 在线体验:
 
-- https://whale.limboer.top/
+- https://whalecalf.limboer.top/
 - https://whale-2qevp0.maozi.io/
+- - https://whale.limboer.top/
 
 原版 Flash 游戏: http://flash.ourgame.com/home/game/3025
 
