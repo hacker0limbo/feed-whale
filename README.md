@@ -1,10 +1,27 @@
 # Feed-Whale 喂食鲸
 
-本项目 90% 为纯 Vibe Coding. 核心理念是把原 Flash 版本的 `.swf` 逆向得到资源后重新使用 TypeScript + HTML5 Canvas + Web Audio API 复刻出来，**行为上与原作逐帧一致**. 并且在原作基础上增补了暂停、设置、金手指等功能。同时适配了移动端
+本项目 90% 为纯 Vibe Coding. 核心理念是把原 Flash 版本的 `.swf` 逆向得到资源后重新使用 TypeScript + HTML5 Canvas + Web Audio API 复刻出来，**行为上与原作逐帧一致**. 并且在原作基础上增补了暂停、设置、金手指等功能。同时适配了移动端, 支持 PWA
 
 AI 使用 DeepSeek V4.1 Flash + ZCode.
 
-原游戏地址: http://flash.ourgame.com/home/game/3025
+在线体验:
+
+- https://whale.limboer.top/
+- https://whale-2qevp0.maozi.io/
+
+原版 Flash 游戏: http://flash.ourgame.com/home/game/3025
+
+## 游戏截图
+
+<figure>
+  <img src="./screenshots/web.png" alt="描述">
+  <figcaption style="text-align: center;">网页桌面端</figcaption>
+</figure>
+
+<figure>
+  <img src="./screenshots/mobile.png" alt="描述">
+  <figcaption style="text-align: center;">手机移动端</figcaption>
+</figure>
 
 ## 快速开始
 
@@ -13,6 +30,54 @@ cd game
 npm install          # 已配好淘宝源（.npmrc）
 npm run dev          # 开发服务器，见下
 npm run build        # 产出纯静态站点到 game/dist
+```
+
+## 常用命令
+
+```bash
+# 重新导出全部素材（需要 tools/ffdec/ 与 PATH 里的 java）
+tools/ff -export script,image,shape,sprite,button,font,sound,text,binaryData,frame re/export/Qua01 swf/Qua01.swf
+tools/ff -format sprite:svg -export sprite re/tmp_svg swf/Qua01.swf
+
+# 重建素材清单与工程索引
+python3 tools/build_manifest.py re/tmp_svg re/export/Qua01/sprites re/manifest.json
+python3 tools/prepare_assets.py
+
+# 重新生成去混淆代码
+python3 tools/avm1_cfg.py swf/Qua01.swf -o re/logs/Qua01_cfg.txt --stats
+python3 tools/deflatten.py re/export/Qua01/scripts/frame_2/DoAction.as -o re/flat/frame_2.flat.as
+```
+
+`tools/ff` 是 ffdec 的包装脚本，负责把 keg-only 的 Homebrew OpenJDK 放进 `PATH`。
+
+### 目录结构
+
+> `swf/` 里的两个文件是这个项目唯一的原始素材来源，**请当作只读**：所有反编译和素材导出都从它们读起，`re/` 下的产物全部可由此重建。
+
+```
+feed-whale/
+├── swf/                      # ★ 原始的 Qua01.swf / Qua_RES.swf，所有工具都读这里
+├── ref/                      # 按 game/lang/Qua_RES.swf 相对路径摆好的副本（跑原版用）
+├── tools/                    # 逆向与素材流水线（Python）
+├── re/                       # 逆向产物
+│   ├── REPORT.md             # ★ 逆向规格报告（1249 行，实现依据）
+│   ├── export/               # ffdec 导出的脚本 / 精灵 / 位图 / 形状 / 音效
+│   ├── flat/                 # 去混淆后的 ActionScript
+│   ├── ref_frames/           # 原作根时间轴渲染帧（对照基准）
+│   ├── compare/              # 其它版本/平台的 SWF（4399、韩版）对照用
+│   └── logs/                 # 反汇编与标签转储
+└── game/                     # Vite + TypeScript 复刻工程
+    ├── index.html            # 画布 + 浮层根节点 + PWA meta
+    ├── src/
+    │   ├── main.ts           # 启动与接线
+    │   ├── flash/            # Flash 兼容层（Clip 时间轴 / Stage / SoundMaster）
+    │   ├── game/             # 游戏逻辑（constants.ts + Game.ts）
+    │   ├── ui/overlays.ts    # 暂停菜单 / 设置面板
+    │   ├── settings.ts       # 设置存储
+    │   ├── platform.ts       # 输入、自适应缩放
+    │   └── assets.ts         # 素材加载
+    ├── public/assets/        # 从 SWF 导出的美术与音效（2.2MB，生成物，见「素材只留用得上的」）
+    └── dist/                 # 构建产物（2.7MB）
 ```
 
 ### 移动端 / 触屏
@@ -149,38 +214,6 @@ tab 用的是标准语义：`role="tablist"` / `role="tab"` / `role="tabpanel"`�
 - **打开任意浮层都会停表**。
 - 打开浮层时焦点移到第一个控件，关闭时还给暂停按钮。
 
-## 目录结构
-
-> `swf/` 里的两个文件是这个项目唯一的原始素材来源，**请当作只读**：所有反编译和素材导出都从它们读起，`re/` 下的产物全部可由此重建。
-
-```
-feed-whale/
-├── swf/                      # ★ 原始的 Qua01.swf / Qua_RES.swf，所有工具都读这里
-├── ref/                      # 按 game/lang/Qua_RES.swf 相对路径摆好的副本（跑原版用）
-├── tools/                    # 逆向与素材流水线（Python）
-├── re/                       # 逆向产物
-│   ├── REPORT.md             # ★ 逆向规格报告（1249 行，实现依据）
-│   ├── export/               # ffdec 导出的脚本 / 精灵 / 位图 / 形状 / 音效
-│   ├── flat/                 # 去混淆后的 ActionScript
-│   ├── ref_frames/           # 原作根时间轴渲染帧（对照基准）
-│   ├── compare/              # 其它版本/平台的 SWF（4399、韩版）对照用
-│   └── logs/                 # 反汇编与标签转储
-└── game/                     # Vite + TypeScript 复刻工程
-    ├── index.html            # 画布 + 浮层根节点 + PWA meta
-    ├── src/
-    │   ├── main.ts           # 启动与接线
-    │   ├── flash/            # Flash 兼容层（Clip 时间轴 / Stage / SoundMaster）
-    │   ├── game/             # 游戏逻辑（constants.ts + Game.ts）
-    │   ├── ui/overlays.ts    # 暂停菜单 / 设置面板
-    │   ├── settings.ts       # 设置存储
-    │   ├── platform.ts       # 输入、自适应缩放
-    │   └── assets.ts         # 素材加载
-    ├── public/assets/        # 从 SWF 导出的美术与音效（5.1MB，生成物）
-    └── dist/                 # 构建产物
-```
-
----
-
 ## 逆向是怎么做的
 
 ### 1. 文件里到底是什么
@@ -241,6 +274,25 @@ M 550 -1  L 550 340  Q 265.05 380.7  0 338  L 0 -1  Z
 ### 6. 没有可提取的文本
 
 UTF-8 / GBK / UTF-16 / Big5 / EUC-KR 全扫过，两个文件里**一个中文字符都没有**。界面文字（标题、按钮、结算卡文案）是**直接画在位图里**的——这也是为什么复刻版的界面天然就是原版的中文。副作用是无法改文案、无法重新本地化。
+
+### 7. 素材只留用得上的
+
+ffdec 导出的是整个资源库，而移植版只碰其中一部分。为了知道差多少，我把 `CanvasRenderingContext2D.drawImage` 打了桩记录每一张真正落到画布上的图，然后手动逐帧驱动（`stage.step()` / `render()`，见 AGENTS.md 里关于 rAF 节流那条）走完所有状态：开场页、游戏说明、1~10 级鲸鱼、全部鱼种与鲨鱼、道具、升级、结算卡、通关卡。结论是 **3.58MB 里只有 2.13MB 会被画到**：
+
+| 从没用到的东西                                                                                                                                                       | 体积  |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----- |
+| 17 个 sprite 目录（141 张 PNG），如 `DefineSprite_6`（639KB）、`204`（鲸鱼那 10 张静态成长图，实际画的是 `whaleAni` 那 10 套）、`215`（结算卡，已改用 RES 真图重建） | 813KB |
+| `images/` 79 张里的 76 张——它们都是"构成某个精灵的碎图"，而导出时精灵已经被烤成了完整帧，等于存了两遍                                                                | 611KB |
+| 按钮悬停态 `2_over`、排行按钮图、`3_down`/`4_hittest`、3 个从没播过的音效                                                                                            | 64KB  |
+
+修剪发生在 `tools/prepare_assets.py` 里——它的 `KEEP_*` 白名单就是上面这套结论的固化，重跑即可复现。素材文件数从 565 降到 325，冷启动少发 240 个请求、少下载 1.45MB。
+
+另有两条路试探过但**放弃**了，记在这里免得后人重走：
+
+- **按 alpha 外接矩形裁边**：不少帧画布利用率很低（吃鱼提示只占 32% 面积、饥饿条 22%），裁掉透明边能再省约 240KB，但 `FrameArt.w/h` 不只是绘制尺寸——`Game.ts:1332` 拿 `a.w / 2` 做点击命中判定、`1361` 拿 `a.w / 551` 算按钮缩放。裁边会改这两个值，等于动了玩法，所以不做。
+- **转 PNG-8 调色板**：只有颜色数 ≤256 才能无损。实际数下来，升级火花（≤150 色）和饥饿条（≤94 色）能转，合计省不到 30KB；最大的通关卡 `DefineSprite_221`（883KB，占素材四成）平均 1.75 万色，转调色板只能是有损的。
+
+通关卡那 883KB 是现在素材里最大的一块，它是 10 张 551×451 的整屏 PNG，在 0.3 秒的展开动画里各显示一帧。真要继续瘦身只能动它的美术，那就不是"删减"而是重做了。
 
 ---
 
@@ -323,24 +375,6 @@ ref/
 **但 Ruffle 0.7.1 不渲染这样载入的关卡**（只出背景色），所以对照页没有随工程发布。想要真正跑原版，用支持 `loadMovieNum` 的 Flash Player / 较新的 Ruffle，按上面布局摆放后打开 `ref/Qua01.swf` 即可。
 
 比对基准改用了更可靠的办法：**让 ffdec 直接渲染原作的根时间轴帧**——`re/ref_frames/1.png`（开场）和 `2.png`（游戏画面）。第 2 帧不依赖任何导入资源，可以完整看出 HUD 布局。复刻版的 HUD 就是照着它对齐的。
-
-## 常用命令
-
-```bash
-# 重新导出全部素材（需要 tools/ffdec/ 与 PATH 里的 java）
-tools/ff -export script,image,shape,sprite,button,font,sound,text,binaryData,frame re/export/Qua01 swf/Qua01.swf
-tools/ff -format sprite:svg -export sprite re/tmp_svg swf/Qua01.swf
-
-# 重建素材清单与工程索引
-python3 tools/build_manifest.py re/tmp_svg re/export/Qua01/sprites re/manifest.json
-python3 tools/prepare_assets.py
-
-# 重新生成去混淆代码
-python3 tools/avm1_cfg.py swf/Qua01.swf -o re/logs/Qua01_cfg.txt --stats
-python3 tools/deflatten.py re/export/Qua01/scripts/frame_2/DoAction.as -o re/flat/frame_2.flat.as
-```
-
-`tools/ff` 是 ffdec 的包装脚本，负责把 keg-only 的 Homebrew OpenJDK 放进 `PATH`。
 
 ---
 

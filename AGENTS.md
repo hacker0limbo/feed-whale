@@ -24,7 +24,7 @@ npm run preview    # 预览 dist/
 # 逆向管线（只在需要重新导出素材时才跑，见 README「常用命令」）
 tools/ff -export script,image,shape,sprite,button,font,sound,text,binaryData,frame re/export/Qua01 swf/Qua01.swf
 python3 tools/build_manifest.py re/tmp_svg re/export/Qua01/sprites re/manifest.json
-python3 tools/prepare_assets.py     # 会清空并重建 game/public/assets
+python3 tools/prepare_assets.py     # 清空并重建 game/public/assets，只拷 KEEP_* 白名单里的素材
 ```
 
 `tools/ff` 是 ffdec 的包装脚本，负责把 keg-only 的 Homebrew OpenJDK 塞进 `PATH`。`re/tmp_svg` 按需生成，仓库里没有。
@@ -48,7 +48,7 @@ feed-whale/
 │   │   ├── platform.ts   # 键鼠/触屏输入、摇杆、View.fit()
 │   │   ├── assets.ts + assets-index.json   # 素材加载 + 索引（后者是生成物）
 │   │   └── style.css     # 全部样式（含 PWA 安全区、横竖屏适配）
-│   ├── public/           # assets/（生成物，5.1MB）· icons/ · manifest.webmanifest
+│   ├── public/           # assets/（生成物，2.2MB，只含用得到的）· icons/ · manifest.webmanifest
 │   ├── dist/             # 构建产物（生成物）
 │   └── vite.config.ts · tsconfig.json · .npmrc
 ├── README.md             # 中文文档：结构、逆向过程、已知差异
@@ -67,7 +67,7 @@ feed-whale/
 | `game/src/platform.ts`、`settings.ts`、`ui/overlays.ts` | 原作没有的增补（输入/自适应/暂停/设置/金手指） |
 | `re/REPORT.md` | **1249 行逆向规格报告，改玩法和数值前的唯一依据** |
 | `re/export/`、`re/flat/`、`re/logs/`、`re/ref_frames/`、`re/manifest.json` | 生成物，不要手改 |
-| `game/src/assets-index.json`、`game/public/assets/`、`game/dist/` | 生成物（`tools/prepare_assets.py` / vite），不要手改 |
+| `game/src/assets-index.json`、`game/public/assets/`、`game/dist/` | 生成物（`tools/prepare_assets.py` / vite），不要手改。素材白名单是 `prepare_assets.py` 里的 `KEEP_*`，改名单后重跑生成器 |
 | `README.md` | 结构说明 + 「已知差异与取舍」表，改行为时同步它 |
 
 ## 改代码时守住的规矩
